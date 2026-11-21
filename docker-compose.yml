@@ -1,0 +1,19 @@
+name: icon-center
+
+services:
+  web:
+    build:
+      context: .
+      target: dev
+    container_name: icon_center_web
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    environment:
+      - NODE_ENV=development
+      - WATCHPACK_POLLING=true
+      - PORT=3000
+    restart: unless-stopped
